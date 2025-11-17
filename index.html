@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Singleton Design Pattern Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 30px;
+      text-align: center;
+    }
+    #log {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      background: #333;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Singleton Pattern Example (JavaScript)</h1>
+  <p>Click the button to get Singleton instances.</p>
+
+  <button onclick="createInstance()">Create Instance</button>
+
+  <div id="log"></div>
+
+  <script>
+    // Singleton Class
+    class Singleton {
+      constructor() {
+        if (Singleton.instance) {
+          return Singleton.instance;
+        }
+        this.timestamp = new Date().toLocaleTimeString();
+        Singleton.instance = this;
+      }
+    }
+
+    function createInstance() {
+      const obj = new Singleton();
+      document.getElementById("log").innerHTML += 
+        `<p>Singleton Instance Timestamp: <b>${obj.timestamp}</b></p>`;
+    }
+  </script>
+
+</body>
+</html>
